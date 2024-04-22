@@ -11,10 +11,7 @@ public class ProcessServices : IProcessServices
     protected int TT;
     protected int TE;
 
-    public ProcessServices(int PID, int Priority, int TCPU){
-        SetPID(PID);
-        SetPriority(Priority);
-        SetTCPU(TCPU);
+    public ProcessServices(){
         this.TT = 0;
         this.TE = 0;
     }
@@ -22,6 +19,8 @@ public class ProcessServices : IProcessServices
         return this.PID;
     }
     public void SetPID(int PID){
+        if(PID <= 0)
+            throw new ExceptionHandlerServices("O PID deve ser maior que 0");
         this.PID = PID;
     }
     public int GetPriority(){
@@ -48,6 +47,5 @@ public class ProcessServices : IProcessServices
     public void SetTE(int tt){
         this.TE = tt;
     }
-
 
 }
