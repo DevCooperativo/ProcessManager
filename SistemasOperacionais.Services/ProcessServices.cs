@@ -19,8 +19,11 @@ public class ProcessServices : IProcessServices
         return this.PID;
     }
     public void SetPID(int PID){
-        if(PID <= 0)
-            throw new ExceptionHandlerServices("O PID deve ser maior que 0");
+        if(PID<=0){
+            Console.WriteLine("O PID deve ser maior que 0. Insira novamente");
+            PID = int.Parse(Console.ReadLine());
+            this.SetPID(PID);
+        }
         this.PID = PID;
     }
     public int GetPriority(){
